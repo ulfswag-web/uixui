@@ -1,0 +1,185 @@
+/* Green House — вариант D (ui-ux-pro-max). Все цвета через токены. */
+:root{
+  --c-primary:#17463A; --c-primary-light:#2E6B50; --c-primary-dark:#0B2A21;
+  --c-gold:#A16207; --c-gold-soft:#E7D3A0;
+  --c-bg:#FAFAF9; --c-card:#FFFFFF; --c-border:#D6D3D1;
+  --c-text:#1C1917; --c-text-2:#44403C; --c-footer:#1C1917;
+  --c-on-primary:#FFFFFF; --c-focus:#A16207;
+  --r-card:20px; --r-ctl:12px;
+  --font-head:"Cormorant","Cormorant Garamond",Georgia,serif;
+  --font-body:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --container:1240px; --gutter:32px; --section:96px;
+  --shadow:0 10px 30px rgba(11,42,33,.10);
+}
+@media (max-width:767px){:root{--gutter:16px;--section:64px}}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--c-bg);color:var(--c-text);font:400 16px/1.6 var(--font-body)}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--font-head);font-weight:600;line-height:1.1;margin:0;color:var(--c-primary)}
+h1{font-size:clamp(2.6rem,6vw,4.75rem);color:var(--c-on-primary)}
+h2{font-size:clamp(2rem,4vw,3rem)}
+h3{font-size:1.75rem}
+p{margin:0}
+.container{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:var(--gutter)}
+.section{padding-block:var(--section)}
+.eyebrow{font-size:.8125rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--c-gold)}
+.lead{color:var(--c-text-2);max-width:60ch}
+.section-head{display:grid;gap:12px;margin-bottom:48px}
+.icon{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* Focus и касания */
+a,button,input,select,summary{cursor:pointer}
+:focus-visible{outline:3px solid var(--c-focus);outline-offset:3px;border-radius:6px}
+.on-dark :focus-visible,.hero :focus-visible,.events :focus-visible,.footer :focus-visible{outline-color:var(--c-gold-soft)}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--c-card);color:var(--c-primary);padding:12px 16px;border-radius:var(--r-ctl);z-index:100}
+.skip:focus{left:8px}
+
+/* Кнопки */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border-radius:var(--r-ctl);
+  font:600 1rem/1 var(--font-body);text-decoration:none;border:2px solid transparent;transition:background-color .2s,transform .2s,border-color .2s}
+.btn-gold{background:var(--c-gold);color:#fff}
+.btn-gold:hover{background:#854D0E}
+.btn-primary{background:var(--c-primary);color:#fff}
+.btn-primary:hover{background:var(--c-primary-light)}
+.btn-ghost{border-color:currentColor;background:transparent}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+.btn-line{border-color:var(--c-primary);color:var(--c-primary);background:transparent}
+.btn-line:hover{background:var(--c-primary);color:#fff}
+.btn:active{transform:translateY(1px)}
+
+/* Шапка */
+.header{position:sticky;top:0;z-index:50;background:rgba(11,42,33,.94);backdrop-filter:blur(10px);color:#fff}
+.header .container{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
+.logo{font-family:var(--font-head);font-size:1.75rem;font-weight:600;text-decoration:none;color:#fff;display:flex;align-items:center;gap:10px;min-height:44px}
+.logo span{color:var(--c-gold-soft)}
+.nav{display:none;gap:4px}
+.nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:var(--r-ctl);text-decoration:none;font-weight:500;font-size:.9375rem}
+.nav a:hover{background:rgba(255,255,255,.1)}
+.header-actions{display:flex;align-items:center;gap:12px}
+.header-phone{display:none;align-items:center;gap:8px;min-height:44px;text-decoration:none;font-weight:500}
+.menu{position:relative}
+.menu summary{list-style:none;display:grid;place-items:center;width:48px;height:48px;border-radius:var(--r-ctl);border:1px solid rgba(255,255,255,.35)}
+.menu summary::-webkit-details-marker{display:none}
+.menu nav{position:absolute;right:0;top:56px;min-width:240px;background:var(--c-card);color:var(--c-text);border-radius:var(--r-card);box-shadow:var(--shadow);padding:8px;display:grid}
+.menu nav a{display:flex;align-items:center;min-height:48px;padding:0 16px;text-decoration:none;border-radius:var(--r-ctl);font-weight:500}
+.menu nav a:hover{background:var(--c-bg)}
+@media (max-width:480px){.header .btn{padding:0 14px;font-size:.875rem}.header-actions{gap:8px}.logo{font-size:1.5rem}}
+@media (min-width:1024px){.nav{display:flex}.menu{display:none}.header-phone{display:inline-flex}}
+
+/* Hero */
+.hero{position:relative;color:#fff;background:
+  radial-gradient(1200px 500px at 80% -10%,rgba(231,211,160,.18),transparent 60%),
+  linear-gradient(160deg,var(--c-primary-light) 0%,var(--c-primary) 45%,var(--c-primary-dark) 100%);
+  padding-block:80px 0}
+.hero-grid{display:grid;gap:40px;align-items:center}
+.hero .eyebrow{color:var(--c-gold-soft)}
+.hero h1{margin-block:16px 20px}
+.hero p.lead{color:#E7E5E4;font-size:1.125rem}
+.hero-facts{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:28px;list-style:none;padding:0;color:#F5F5F4;font-weight:500}
+.hero-facts li{display:flex;align-items:center;gap:8px}
+.hero-facts svg{color:var(--c-gold-soft)}
+.hero-art{display:none;aspect-ratio:3/4;border-radius:200px 200px var(--r-card) var(--r-card);border:1px solid rgba(231,211,160,.5);
+  background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.02));place-items:end center;padding:24px;text-align:center;
+  font-size:.875rem;color:var(--c-gold-soft)}
+@media (min-width:1024px){.hero-grid{grid-template-columns:1.25fr .75fr}.hero-art{display:grid;max-width:380px;justify-self:end;width:100%}}
+.hero{padding-bottom:0}
+
+/* Форма бронирования */
+.booking{position:relative;z-index:2;margin-top:48px;margin-bottom:-64px}
+.booking form{background:rgba(255,255,255,.96);backdrop-filter:blur(14px);color:var(--c-text);border-radius:var(--r-card);box-shadow:var(--shadow);
+  padding:24px;display:grid;gap:16px;border:1px solid var(--c-border)}
+.field{display:grid;gap:6px}
+.field label{font-size:.875rem;font-weight:600;color:var(--c-text-2)}
+.field input,.field select{min-height:48px;padding:0 14px;border:1px solid var(--c-border);border-radius:var(--r-ctl);background:#fff;font:400 1rem var(--font-body);color:var(--c-text)}
+.field input:hover,.field select:hover{border-color:var(--c-primary-light)}
+.booking .btn{width:100%}
+.booking small{color:var(--c-text-2);font-size:.875rem}
+@media (min-width:768px){.booking form{grid-template-columns:repeat(2,1fr)}.booking .btn,.booking small{grid-column:1/-1}}
+@media (min-width:1024px){.booking form{grid-template-columns:1.2fr 1.2fr .8fr auto;align-items:end}.booking .btn{grid-column:auto;width:auto;min-width:200px}.booking small{grid-column:1/-1}}
+
+/* Награды */
+.awards{padding-block:112px 0}
+.awards ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:center;color:var(--c-text-2);font-weight:500;font-size:.9375rem}
+.awards li{display:flex;align-items:center;gap:8px}
+.awards svg{color:var(--c-gold)}
+@media (min-width:1280px){.awards ul{flex-wrap:nowrap;font-size:.875rem;gap:20px}}
+
+/* Удобства */
+.amen{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.amen li{background:var(--c-card);border:1px solid var(--c-border);border-radius:var(--r-card);padding:24px 16px;display:grid;justify-items:center;gap:12px;text-align:center;font-weight:500}
+.amen svg{width:32px;height:32px;color:var(--c-primary)}
+@media (min-width:768px){.amen{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1024px){.amen{grid-template-columns:repeat(5,1fr)}}
+.amen span{overflow-wrap:anywhere}
+
+/* Карточки */
+.photo{position:relative;display:grid;place-items:center;text-align:center;padding:16px;color:var(--c-gold-soft);font-size:.875rem;
+  background:linear-gradient(135deg,var(--c-primary-light),var(--c-primary-dark));border-radius:var(--r-card) var(--r-card) 0 0;aspect-ratio:16/10;overflow:hidden}
+.card{background:var(--c-card);border:1px solid var(--c-border);border-radius:var(--r-card);overflow:hidden;display:flex;flex-direction:column;
+  transition:box-shadow .2s,transform .2s}
+.card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.card-body{padding:24px;display:grid;gap:12px;flex:1;align-content:start}
+.card-body p{color:var(--c-text-2)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0}
+.tags li{font-size:.8125rem;font-weight:500;padding:4px 12px;border-radius:999px;background:var(--c-bg);border:1px solid var(--c-border);color:var(--c-text-2)}
+.price{font-family:var(--font-head);font-size:2rem;font-weight:600;color:var(--c-gold)}
+.card-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.grid-2{display:grid;gap:24px}
+@media (min-width:768px){.grid-2{grid-template-columns:repeat(2,1fr)}}
+
+/* Заведения: асимметричная сетка */
+.venues{display:grid;gap:24px}
+.venue{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:280px;border-radius:var(--r-card);overflow:hidden;color:#fff;text-decoration:none;padding:24px;
+  background:linear-gradient(200deg,var(--c-primary-light),var(--c-primary-dark));transition:transform .2s,box-shadow .2s}
+.venue:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.venue::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(11,42,33,.75))}
+.venue>*{position:relative}
+.venue h3{color:#fff;font-size:1.75rem}
+.venue p{color:#E7E5E4;font-size:.9375rem}
+.venue .more{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-weight:600;color:var(--c-gold-soft)}
+.venue .ph{position:absolute;top:16px;left:16px;font-size:.75rem;color:var(--c-gold-soft)}
+.venue.big{min-height:360px}
+@media (min-width:1024px){.venues{grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,minmax(240px,1fr))}
+  .venue.big{grid-column:1/3;grid-row:1/3}.venue.big h3{font-size:2.5rem}}
+@media (min-width:768px) and (max-width:1023px){.venues{grid-template-columns:repeat(2,1fr)}.venue.big{grid-column:1/-1}}
+
+/* Расположение */
+.loc{display:grid;gap:32px;align-items:center}
+.loc ul{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px}
+.loc li{display:flex;gap:12px;align-items:flex-start;color:var(--c-text-2)}
+.loc li svg{color:var(--c-gold);margin-top:2px}
+.map{display:grid;place-items:center;text-align:center;min-height:320px;border-radius:var(--r-card);padding:24px;gap:16px;
+  background:linear-gradient(135deg,#E7E5E4,#D6D3D1);border:1px solid var(--c-border);color:var(--c-text-2)}
+@media (min-width:1024px){.loc{grid-template-columns:1fr 1fr}}
+
+/* Мероприятия */
+.events{background:var(--c-primary);color:#fff}
+.events h2{color:#fff}
+.events .eyebrow{color:var(--c-gold-soft)}
+.events .lead{color:#E7E5E4}
+.ev-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.ev-list a{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding:12px 20px;border-radius:var(--r-ctl);
+  background:rgba(255,255,255,.08);border:1px solid rgba(231,211,160,.35);text-decoration:none;font-weight:500;transition:background-color .2s}
+.ev-list a:hover{background:rgba(255,255,255,.16)}
+.ev-list svg{color:var(--c-gold-soft)}
+.ev-grid{display:grid;gap:40px}
+@media (min-width:768px){.ev-list{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1024px){.ev-grid{grid-template-columns:.8fr 1.2fr;align-items:start}}
+
+/* Отзывы */
+.reviews-box{background:var(--c-card);border:1px dashed var(--c-border);border-radius:var(--r-card);padding:32px;display:grid;gap:16px;justify-items:start}
+
+/* Футер */
+.footer{background:var(--c-footer);color:#D6D3D1;padding-block:64px 32px}
+.footer h3{color:#fff;font-size:1.5rem;margin-bottom:12px}
+.footer a{text-decoration:none}
+.footer a:hover{color:var(--c-gold-soft)}
+.f-grid{display:grid;gap:32px}
+.f-grid ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.f-grid li a{display:inline-flex;align-items:center;gap:8px;min-height:44px}
+.legal{margin-top:40px;padding-top:24px;border-top:1px solid #44403C;font-size:.875rem;color:#A8A29E}
+@media (min-width:768px){.f-grid{grid-template-columns:1.4fr 1fr 1fr}}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}

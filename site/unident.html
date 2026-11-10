@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ЮниДент — стоматология в Тюмени (демо-редизайн)</title>
+<meta name="description" content="Демонстрационный редизайн главной страницы стоматологической клиники «ЮниДент», Тюмень.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --milk:#F7F3EC; --sand:#EDE5D8; --paper:#FFFDF9;
+  --ink:#1F2326; --muted:#5E6468; --line:#DDD3C3;
+  --teal:#0F4C57; --teal-2:#1C6A78; --mist:#CFE0DF; --clay:#C9A98A;
+  --r:28px; --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font:400 17px/1.6 Inter,system-ui,sans-serif;color:var(--ink);background:var(--milk);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:500;line-height:1.05;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--teal-2);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-2);font-weight:600;display:flex;gap:12px;align-items:center}
+.eyebrow::before{content:"";width:32px;height:1px;background:currentColor}
+section{padding:120px 0}
+h2{font-size:clamp(36px,5vw,64px);margin-top:18px}
+h2 em,h1 em{font-style:italic;color:var(--teal)}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 28px;border-radius:99px;font-weight:500;font-size:15px;border:1px solid transparent;cursor:pointer;transition:.3s var(--ease)}
+.btn-primary{background:var(--teal);color:#fff}
+.btn-primary:hover{background:var(--ink);transform:translateY(-2px)}
+.btn-ghost{border-color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:#fff}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(247,243,236,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-family:'Playfair Display',serif;font-size:26px;font-weight:600;letter-spacing:-.02em}
+.logo i{color:var(--teal);font-style:normal}
+nav ul{display:flex;gap:34px;list-style:none;padding:0;font-size:15px}
+nav a{position:relative;padding:6px 0}
+nav a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--ink);transition:.3s var(--ease)}
+nav a:hover::after{width:100%}
+.tel{font-weight:500;margin-right:18px}
+.nav-r{display:flex;align-items:center}
+.nav-r .btn{min-height:42px;padding:0 22px}
+
+/* hero */
+.hero{padding:70px 0 0;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+h1{font-size:clamp(46px,7.4vw,108px);margin:26px 0 30px}
+.lead{font-size:20px;color:var(--muted);max-width:520px}
+.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
+.arch{position:relative;aspect-ratio:4/5;border-radius:999px 999px var(--r) var(--r);background:
+  radial-gradient(120% 80% at 30% 10%,#e9f0ee 0%,transparent 60%),
+  linear-gradient(170deg,var(--mist),var(--teal-2) 130%);overflow:hidden}
+.arch svg{position:absolute;inset:0;width:100%;height:100%}
+.tag{position:absolute;left:-18px;bottom:46px;background:var(--paper);padding:18px 22px;border-radius:20px;box-shadow:0 18px 40px -18px rgba(31,35,38,.3);max-width:230px;font-size:14px;line-height:1.4}
+.tag b{display:block;font-family:'Playfair Display',serif;font-size:34px;font-weight:500;color:var(--teal)}
+.ph{position:absolute;right:14px;top:14px;font-size:11px;background:rgba(255,255,255,.7);padding:4px 10px;border-radius:99px;color:var(--muted)}
+.marquee{margin-top:90px;border-block:1px solid var(--line);padding:22px 0;overflow:hidden;white-space:nowrap}
+.marquee div{display:inline-block;animation:slide 38s linear infinite;font-family:'Playfair Display',serif;font-size:30px;font-style:italic;color:var(--muted)}
+.marquee span{margin:0 26px;color:var(--clay)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:70px;border-top:1px solid var(--ink)}
+.fact{padding:34px 34px 0 0}
+.fact+.fact{padding-left:34px;border-left:1px solid var(--line)}
+.fact b{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(56px,7vw,100px);line-height:1;color:var(--teal);display:block}
+.fact p{margin-top:14px;color:var(--muted);max-width:280px}
+
+/* services */
+.services{background:var(--sand);border-radius:48px 48px 0 0}
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:56px}
+.card{position:relative;border-radius:var(--r);padding:30px;min-height:240px;display:flex;flex-direction:column;justify-content:space-between;background:var(--paper);overflow:hidden;transition:.5s var(--ease)}
+.card:hover{transform:translateY(-6px)}
+.card h3{font-size:32px}
+.card p{font-size:15px;color:var(--muted);max-width:300px;margin-top:10px}
+.card .go{width:46px;height:46px;border-radius:50%;border:1px solid currentColor;display:grid;place-items:center;align-self:flex-end;transition:.3s}
+.card:hover .go{background:var(--ink);color:#fff;transform:rotate(-45deg)}
+.c1{grid-column:span 7;min-height:380px;background:var(--teal);color:#fff}
+.c1 p{color:#cfe0df}.c1 h3{font-size:52px}
+.c2{grid-column:span 5}.c3{grid-column:span 4}.c4{grid-column:span 4;background:var(--mist)}.c5{grid-column:span 4}
+.c6{grid-column:span 5;background:var(--clay)}.c6 p{color:#3a2f25}
+.c7{grid-column:span 7}.c7{display:grid;grid-template-columns:1fr 1fr}
+.num{font-size:13px;letter-spacing:.14em;opacity:.6}
+.deco{position:absolute;right:-30px;top:-30px;width:260px;opacity:.18}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.photo{position:relative;aspect-ratio:1/1.05;border-radius:var(--r);background:linear-gradient(135deg,#d8cdbb,#a99577);overflow:hidden}
+.photo.b{border-radius:var(--r) 999px var(--r) var(--r)}
+.about-grid p{color:var(--muted);margin-top:24px;max-width:480px}
+.list{list-style:none;padding:0;margin-top:30px;border-top:1px solid var(--line)}
+.list li{padding:16px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}
+
+/* doctors */
+.docs{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:56px}
+.doc .pic{aspect-ratio:3/4;border-radius:999px 999px 20px 20px;position:relative;overflow:hidden;transition:.5s var(--ease)}
+.doc:nth-child(1) .pic{background:linear-gradient(180deg,var(--mist),#9fc0c0)}
+.doc:nth-child(2) .pic{background:linear-gradient(180deg,#e6d6c2,var(--clay))}
+.doc:nth-child(3) .pic{background:linear-gradient(180deg,#d7e1dc,#8fb0a8)}
+.doc:nth-child(4) .pic{background:linear-gradient(180deg,#ece3d3,#bfa88a)}
+.doc:hover .pic{transform:translateY(-8px)}
+.pic svg{position:absolute;inset:0;width:100%;height:100%}
+.doc h3{font-size:24px;margin-top:20px}
+.doc p{font-size:14px;color:var(--muted)}
+.doc a{font-size:14px;font-weight:500;color:var(--teal);display:inline-block;margin-top:8px;border-bottom:1px solid}
+
+/* steps */
+.steps-sec{background:var(--ink);color:#fff;border-radius:48px}
+.steps-sec .eyebrow{color:var(--clay)}.steps-sec h2 em{color:var(--clay)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:64px;counter-reset:s}
+.step{padding:34px 34px 40px 0;border-top:1px solid #ffffff30;counter-increment:s}
+.step:nth-child(n+4){margin-top:10px}
+.step::before{content:"0" counter(s);font-family:'Playfair Display',serif;font-size:56px;color:var(--clay);display:block;font-style:italic}
+.step h3{font-size:26px;margin:14px 0 8px}
+.step p{color:#aeb4b7;font-size:15px;max-width:300px}
+
+/* reviews + faq */
+.rev{margin-top:50px;display:grid;grid-template-columns:1.2fr 1fr;gap:20px}
+.quote{border:1px dashed var(--clay);border-radius:var(--r);padding:44px;background:var(--paper)}
+.quote q{font-family:'Playfair Display',serif;font-size:30px;font-style:italic;line-height:1.3;color:var(--muted)}
+.quote small{display:block;margin-top:22px;color:var(--muted)}
+details{border-bottom:1px solid var(--line);padding:22px 0}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;font-family:'Playfair Display',serif;font-size:24px}
+summary::after{content:"+";font-family:Inter;font-size:28px;color:var(--teal);transition:.3s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--muted);margin-top:12px;max-width:560px}
+.two{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px}
+
+/* booking */
+.book{background:var(--teal);color:#fff;border-radius:48px;padding:90px 70px;display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;position:relative;overflow:hidden}
+.book h2 em{color:var(--clay)}
+.book p{color:#cfe0df;margin-top:20px;max-width:420px}
+form{display:grid;gap:16px}
+label{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#cfe0df}
+input{width:100%;margin-top:8px;height:56px;border-radius:16px;border:1px solid #ffffff55;background:#ffffff14;color:#fff;padding:0 20px;font:inherit}
+input::placeholder{color:#ffffff90}
+.book .btn{background:#fff;color:var(--teal);justify-content:center;min-height:56px;font-size:16px}
+.book .btn:hover{background:var(--clay);color:var(--ink)}
+.note{font-size:12px;color:#cfe0df;line-height:1.5}
+#msg{font-size:14px;color:var(--clay);min-height:20px}
+
+/* contacts */
+.branches{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:50px}
+.br{border:1px solid var(--line);border-radius:var(--r);padding:38px;background:var(--paper)}
+.br h3{font-size:30px}.br p{color:var(--muted);margin-top:10px}
+footer{padding:40px 0 60px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(34px);transition:1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+@media(max-width:960px){
+  section{padding:80px 0}
+  nav,.tel{display:none}
+  .hero-grid,.about-grid,.two,.book,.rev,.branches{grid-template-columns:1fr;gap:40px}
+  .arch{max-width:420px}.tag{left:10px}
+  .facts,.steps{grid-template-columns:1fr}
+  .fact+.fact{padding-left:0;border-left:0;border-top:1px solid var(--line);margin-top:30px}
+  .bento>*{grid-column:1/-1!important}.c7{display:flex}
+  .docs{grid-template-columns:1fr 1fr}
+  .book{padding:50px 28px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">Юни<i>Дент</i></a>
+    <nav aria-label="Основное"><ul>
+      <li><a href="#services">Услуги</a></li><li><a href="#doctors">Врачи</a></li>
+      <li><a href="#prices">Цены</a></li><li><a href="#about">О клинике</a></li><li><a href="#contacts">Контакты</a></li>
+    </ul></nav>
+    <div class="nav-r"><a class="tel" href="#contacts">Контакты</a><a class="btn btn-primary" href="#book">Записаться</a></div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="rv">
+      <div class="eyebrow">Стоматология · Тюмень · с 1998 года</div>
+      <h1>Улыбка, которой <em>вы&nbsp;доверяете</em></h1>
+      <p class="lead">Полный цикл лечения под одной крышей: от диагностики до собственной зуботехнической лаборатории. Два филиала в Тюмени.</p>
+      <div class="cta"><a class="btn btn-primary" href="#book">Записаться на консультацию →</a><a class="btn btn-ghost" href="#services">Посмотреть услуги</a></div>
+    </div>
+    <div class="rv" style="transition-delay:.15s">
+      <div class="arch" role="img" aria-label="Заменяемая иллюстрация: фото интерьера или врача">
+        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" fill="none">
+          <circle cx="300" cy="140" r="120" fill="#ffffff" opacity=".18"/>
+          <circle cx="110" cy="380" r="170" fill="#0F4C57" opacity=".35"/>
+          <path d="M-20 430 C 120 330, 260 470, 430 340 V520 H-20Z" fill="#F7F3EC" opacity=".9"/>
+        </svg>
+        <span class="ph">место для фото клиники</span>
+      </div>
+      <div class="tag" style="position:relative;margin:-90px 0 0 -18px"><b>1998</b>год основания клиники</div>
+    </div>
+  </div>
+  <div class="marquee" aria-hidden="true"><div>
+    Терапия <span>✦</span> Хирургия <span>✦</span> Имплантация <span>✦</span> Протезирование <span>✦</span> Ортодонтия <span>✦</span> Детская стоматология <span>✦</span> Гигиена <span>✦</span> Пародонтология <span>✦</span>
+    Терапия <span>✦</span> Хирургия <span>✦</span> Имплантация <span>✦</span> Протезирование <span>✦</span> Ортодонтия <span>✦</span> Детская стоматология <span>✦</span> Гигиена <span>✦</span> Пародонтология <span>✦</span>
+  </div></div>
+</section>
+
+<section style="padding-top:90px">
+  <div class="wrap">
+    <div class="eyebrow rv">Почему ЮниДент</div>
+    <h2 class="rv">Всё для лечения — <em>в одних руках</em></h2>
+    <div class="facts">
+      <div class="fact rv"><b>1998</b><p>год основания: клиника работает в Тюмени уже десятилетиями</p></div>
+      <div class="fact rv" style="transition-delay:.1s"><b>2</b><p>филиала: удобно добраться из разных районов города</p></div>
+      <div class="fact rv" style="transition-delay:.2s"><b>Lab</b><p>собственная зуботехническая лаборатория — контроль на каждом этапе</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="eyebrow rv">Направления</div>
+    <h2 class="rv">Найдите <em>своё</em> направление</h2>
+    <div class="bento">
+      <a href="#book" class="card c1 rv"><svg class="deco" viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width=".6"><circle cx="50" cy="50" r="48"/><circle cx="50" cy="50" r="34"/><circle cx="50" cy="50" r="20"/></svg><span class="num">01</span><div><h3>Имплантация</h3><p>Восстановление утраченных зубов с продуманным планом и точной диагностикой.</p></div><span class="go">→</span></a>
+      <a href="#book" class="card c2 rv"><span class="num">02</span><div><h3>Терапия</h3><p>Лечение кариеса и каналов.</p></div><span class="go">→</span></a>
+      <a href="#book" class="card c3 rv"><span class="num">03</span><div><h3>Протезирование</h3><p>Коронки, виниры, съёмные и несъёмные конструкции.</p></div><span class="go">→</span></a>
+      <a href="#book" class="card c4 rv"><span class="num">04</span><div><h3>Ортодонтия</h3><p>Брекеты и исправление прикуса.</p></div><span class="go">→</span></a>
+      <a href="#book" class="card c5 rv"><span class="num">05</span><div><h3>Хирургия</h3><p>Удаление зубов и хирургическая помощь.</p></div><span class="go">→</span></a>
+      <a href="#book" class="card c6 rv"><span class="num">06</span><div><h3>Детская стоматология</h3><p>Бережный подход к маленьким пациентам.</p></div><span class="go">→</span></a>
+      <a href="#book" class="card c7 rv"><div><span class="num">07 · 08</span><h3 style="margin-top:60px">Гигиена и пародонтология</h3></div><div><p style="margin-top:0">Профессиональная чистка, профилактика и лечение заболеваний дёсен.</p></div></a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="photo b rv" role="img" aria-label="Заменяемое фото интерьера"><span class="ph">место для фото интерьера</span>
+      <svg viewBox="0 0 400 420" style="position:absolute;inset:0;width:100%;height:100%" fill="none"><path d="M0 300 Q120 220 220 290 T400 250V420H0Z" fill="#F7F3EC" opacity=".5"/><circle cx="290" cy="110" r="70" fill="#fff" opacity=".25"/></svg>
+    </div>
+    <div class="rv">
+      <div class="eyebrow">О клинике</div>
+      <h2>Лечение без <em>переходов</em> между клиниками</h2>
+      <p>Диагностика, лечение и изготовление конструкций — в одной системе. Врачи и зубные техники работают как одна команда.</p>
+      <ul class="list"><li><span>Современное диагностическое оборудование</span><span>→</span></li><li><span>Собственная зуботехническая лаборатория</span><span>→</span></li><li><span>Комплексный план лечения</span><span>→</span></li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="doctors" style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow rv">Врачи</div>
+    <h2 class="rv">Люди, которым <em>можно доверить</em> улыбку</h2>
+    <div class="docs">
+      <article class="doc rv"><div class="pic"><svg viewBox="0 0 300 400"><circle cx="150" cy="170" r="52" fill="#fff" opacity=".55"/><path d="M40 400c0-90 50-130 110-130s110 40 110 130z" fill="#fff" opacity=".55"/></svg></div><h3>Врач-терапевт</h3><p>ФИО, стаж — после согласования</p><a href="#book">Записаться</a></article>
+      <article class="doc rv" style="transition-delay:.08s"><div class="pic"><svg viewBox="0 0 300 400"><circle cx="150" cy="170" r="52" fill="#fff" opacity=".55"/><path d="M40 400c0-90 50-130 110-130s110 40 110 130z" fill="#fff" opacity=".55"/></svg></div><h3>Врач-имплантолог</h3><p>ФИО, стаж — после согласования</p><a href="#book">Записаться</a></article>
+      <article class="doc rv" style="transition-delay:.16s"><div class="pic"><svg viewBox="0 0 300 400"><circle cx="150" cy="170" r="52" fill="#fff" opacity=".55"/><path d="M40 400c0-90 50-130 110-130s110 40 110 130z" fill="#fff" opacity=".55"/></svg></div><h3>Врач-ортодонт</h3><p>ФИО, стаж — после согласования</p><a href="#book">Записаться</a></article>
+      <article class="doc rv" style="transition-delay:.24s"><div class="pic"><svg viewBox="0 0 300 400"><circle cx="150" cy="170" r="52" fill="#fff" opacity=".55"/><path d="M40 400c0-90 50-130 110-130s110 40 110 130z" fill="#fff" opacity=".55"/></svg></div><h3>Детский врач</h3><p>ФИО, стаж — после согласования</p><a href="#book">Записаться</a></article>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 28px" id="prices">
+  <div class="steps-sec" style="max-width:1240px;margin:0 auto;padding:100px 56px">
+    <div class="eyebrow rv">Путь пациента</div>
+    <h2 class="rv">Шесть шагов к <em>результату</em></h2>
+    <div class="steps">
+      <div class="step rv"><h3>Обращение</h3><p>Оставьте заявку или позвоните — подберём удобное время.</p></div>
+      <div class="step rv"><h3>Консультация</h3><p>Первичный осмотр и разговор о ваших задачах.</p></div>
+      <div class="step rv"><h3>Диагностика</h3><p>Точная картина состояния зубов и дёсен.</p></div>
+      <div class="step rv"><h3>План лечения</h3><p>Понятные этапы и ориентировочная стоимость.</p></div>
+      <div class="step rv"><h3>Лечение</h3><p>Процедуры и работа лаборатории в одной команде.</p></div>
+      <div class="step rv"><h3>Контроль</h3><p>Проверяем результат и даём рекомендации.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap two">
+    <div class="rv">
+      <div class="eyebrow">Отзывы</div>
+      <h2>Голоса <em>пациентов</em></h2>
+      <div class="quote" style="margin-top:40px"><q>Здесь появятся реальные отзывы пациентов с датой, именем врача и ссылкой на внешний источник.</q><small>Демо-макет · отзывы не выдуманы и будут добавлены из проверенных источников</small></div>
+    </div>
+    <div class="rv" style="transition-delay:.1s">
+      <div class="eyebrow">Вопросы</div>
+      <h2 style="font-size:clamp(32px,4vw,52px);margin-bottom:30px">Частые вопросы</h2>
+      <details open><summary>Как записаться на приём?</summary><p>Оставьте имя и телефон в форме ниже — администратор свяжется с вами и подберёт время.</p></details>
+      <details><summary>Как узнать стоимость лечения?</summary><p>Ориентировочная стоимость определяется после консультации и диагностики.</p></details>
+      <details><summary>Есть ли детская стоматология?</summary><p>Да, детское направление входит в число услуг клиники.</p></details>
+      <details><summary>Где находятся филиалы?</summary><p>Два филиала в Тюмени — адреса в разделе «Контакты».</p></details>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0" id="book">
+  <div class="wrap">
+    <div class="book rv">
+      <div><div class="eyebrow" style="color:var(--clay)">Запись</div><h2>Сделайте первый шаг <em>к здоровой улыбке</em></h2><p>Достаточно имени и телефона. Остальное уточним по звонку.</p></div>
+      <form id="f" novalidate>
+        <div><label for="n">Имя</label><input id="n" name="name" autocomplete="name" placeholder="Как к вам обращаться"></div>
+        <div><label for="t">Телефон</label><input id="t" name="tel" type="tel" autocomplete="tel" placeholder="+7"></div>
+        <button class="btn" type="submit">Отправить заявку</button>
+        <div id="msg" role="status"></div>
+        <p class="note">Демонстрационная форма: данные никуда не отправляются. В рабочей версии здесь будет согласие на обработку персональных данных.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="contacts" style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow rv">Контакты</div>
+    <h2 class="rv">Два филиала <em>в Тюмени</em></h2>
+    <div class="branches">
+      <div class="br rv"><h3>Филиал 1</h3><p>Адрес, телефон и режим работы — взять с официального сайта.</p></div>
+      <div class="br rv" style="transition-delay:.1s"><h3>Филиал 2</h3><p>Адрес, телефон и режим работы — взять с официального сайта.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="wrap"><footer><span>© ЮниДент · демонстрационный редизайн</span><span>Фото, ФИО врачей, адреса и отзывы — заменяемые материалы</span></footer></div>
+
+<script>
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+document.getElementById('f').addEventListener('submit',e=>{
+  e.preventDefault();
+  const m=document.getElementById('msg');
+  m.textContent=(n.value.trim()&&t.value.trim())?'Это демо: заявка не отправлена.':'Заполните имя и телефон.';
+});
+</script>
+</body>
+</html>

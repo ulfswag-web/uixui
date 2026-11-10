@@ -3,102 +3,215 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Green House: бутик-отель в замке, Тюмень</title>
-<meta name="description" content="Бутик-отель 4★ в замке рядом с парком «Берёзовая роща». Номера от 4 900 ₽, онлайн-бронирование без предоплаты.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@600&family=Montserrat:wght@400;500;600&display=swap&subset=cyrillic" rel="stylesheet">
+<title>Green House — бутик-отель в замке, Тюмень</title>
+<meta name="description" content="Green House — бутик-отель 4★ в замке рядом с парком «Берёзовая роща», Тюмень. Номера от 4 900 ₽, ресторан, паб, кондитерская, банкетные залы.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <a class="skip" href="#main">Перейти к содержимому</a>
-<header class="header"><div class="container">
-<a class="logo" href="#top" aria-label="Green House, на главную">Green<span>House</span></a>
-<nav class="nav" aria-label="Основное меню"><a href="#nomera">Номера</a><a href="#zavedeniya">Заведения</a><a href="#meropriyatiya">Мероприятия</a><a href="#otel">Об отеле</a><a href="#kontakty">Контакты</a></nav>
-<div class="header-actions">
-<a class="header-phone" href="tel:+73452385385"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+7 (3452) 385-385</a>
-<a class="btn btn-gold" href="#booking">Забронировать</a>
-<details class="menu"><summary aria-label="Открыть меню"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg></summary><nav aria-label="Мобильное меню"><a href="#nomera">Номера</a><a href="#zavedeniya">Заведения</a><a href="#meropriyatiya">Мероприятия</a><a href="#otel">Об отеле</a><a href="#kontakty">Контакты</a><a href="tel:+73452385385">Позвонить</a></nav></details>
-</div></div></header>
-<main id="main">
-<section class="hero" id="top"><div class="container">
-<div class="hero-grid">
-<div><p class="eyebrow">Бутик-отель 4★ · Тюмень</p>
-<h1>Пусть будет сказка в Вашей жизни</h1>
-<p class="lead">Отель в замке рядом с парком «Берёзовая роща». До центра 10 минут на машине, 15 на автобусе.</p>
-<ul class="hero-facts"><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Номера от 4 900 ₽</li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Бронирование без предоплаты</li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Booking: «превосходно»</li></ul></div>
-<div class="hero-art" role="img" aria-label="Место для фото замка">Фото фасада замка [ЗАПОЛНИТЬ]</div>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <span class="loader__mark">Green House</span>
+  <span class="loader__line"></span>
 </div>
-<div class="booking" id="booking"><form action="https://grnhouse.ru/bronirovanie-nomera/" method="get" aria-label="Поиск номера">
-<input type="hidden" name="hotel_id" value="1064">
-<!-- TODO: имена полей дат/гостей определяются виджетом TravelLine на /bronirovanie-nomera/ — согласовать, не выдумывать. Пока форма ведёт на страницу бронирования. -->
-<div class="field"><label for="in">Заезд</label><input id="in" type="date" autocomplete="off"></div>
-<div class="field"><label for="out">Выезд</label><input id="out" type="date" autocomplete="off"></div>
-<div class="field"><label for="g">Гости</label><select id="g"><option>1 гость</option><option selected>2 гостя</option><option>3 гостя</option><option>4 гостя</option></select></div>
-<button class="btn btn-gold" type="submit">Найти номер</button>
-<small>Онлайн-бронирование без предоплаты. Даты и гостей подтвердите на странице бронирования.</small>
-</form></div>
-</div></section>
 
-<section class="awards" aria-label="Награды"><div class="container"><ul><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>Top Hotel in Tyumen</li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>Выбор пользователей Яндекса 2026</li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>Лучшая маленькая гостиница России</li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>2ГИС: лучшая гостиница 2025 и 2026</li></ul></div></section>
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Green House, наверх">Green House</a>
+  <nav class="nav__links" aria-label="Основная навигация">
+    <a href="#rooms">Номера</a>
+    <a href="#venues">Заведения</a>
+    <a href="#events">Мероприятия</a>
+    <a href="#about">Об отеле</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+  <a class="nav__tel" href="tel:+73452385385">+7 (3452) 385-385</a>
+  <a class="btn btn--ghost nav__cta" href="#book" data-magnet>Забронировать</a>
+  <button class="nav__burger" id="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span></button>
+</header>
 
-<section class="section" id="otel"><div class="container">
-<div class="section-head"><p class="eyebrow">Всё включено в проживание</p><h2>Комфорт без лишних доплат</h2></div>
-<ul class="amen"><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg><span>Бесплатная парковка</span></li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 20 0"/><path d="M5 12.859a10 10 0 0 1 14 0"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/></svg><span>Безлимитный Wi-Fi</span></li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><span>Room service</span></li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 22h8"/><path d="M7 10h10"/><path d="M12 15v7"/><path d="M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z"/></svg><span>Приветственный напиток</span></li><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="15" x="2" y="7" rx="2"/><polyline points="17 2 12 7 7 2"/></svg><span>Цифровое ТВ</span></li></ul></div></section>
+<div class="menu" id="menu">
+  <a href="#rooms">Номера</a><a href="#venues">Заведения</a><a href="#events">Мероприятия</a>
+  <a href="#about">Об отеле</a><a href="#contacts">Контакты</a>
+  <a class="menu__tel" href="tel:+73452385385">+7 (3452) 385-385</a>
+</div>
 
-<section class="section" id="nomera" style="padding-top:0"><div class="container">
-<div class="section-head"><p class="eyebrow">Номера</p><h2>Выберите свой номер</h2><p class="lead">Цены от 4 900 ₽. Ниже категории, представленные на главной.</p></div>
-<div class="grid-2"><article class="card"><div class="photo" role="img" aria-label="Место для фото номера «Дабл»">Фото номера [ЗАПОЛНИТЬ]</div>
-<div class="card-body"><h3>Дабл</h3><p class="price">7 200 ₽</p><p>Первая категория. Кровать Queen size 1800×2000, 4 дизайн-концепции.</p>
-<ul class="tags"><li>Первая категория</li><li>Queen size 1800×2000</li><li>4 дизайн-концепции</li></ul>
-<div class="card-actions"><a class="btn btn-primary" href="https://grnhouse.ru/bronirovanie-nomera/?hotel_id=1064&room-type=8156">Забронировать</a><a class="btn btn-line" href="https://grnhouse.ru/nomera/double-room/">Подробнее</a></div></div></article>
-<article class="card"><div class="photo" role="img" aria-label="Место для фото номера «Королевский люкс»">Фото номера [ЗАПОЛНИТЬ]</div>
-<div class="card-body"><h3>Королевский люкс</h3><p class="price">22 000 ₽</p><p>Джуниор-сюит с кроватью King size 2000×2000 и открытой террасой 75 м².</p>
-<ul class="tags"><li>Джуниор-сюит</li><li>King size 2000×2000</li><li>Терраса 75 м²</li></ul>
-<div class="card-actions"><a class="btn btn-primary" href="https://grnhouse.ru/bronirovanie-nomera/?hotel_id=1064&room-type=8203">Забронировать</a><a class="btn btn-line" href="https://grnhouse.ru/nomera/luxury-king-suite/">Подробнее</a></div></div></article>
-</div></div></section>
+<main id="main">
 
-<section class="section" id="zavedeniya" style="padding-top:0"><div class="container">
-<div class="section-head"><p class="eyebrow">Заведения комплекса</p><h2>Больше, чем отель</h2></div>
-<div class="venues"><a class="venue big" href="https://grnhouse.ru/zavedeniya/restoran-v-tyumeni/"><span class="ph">Фото: ресторан [ЗАПОЛНИТЬ]</span><h3>Ресторан в замке</h3><p>Единственный в Тюмени ресторан в замке. Есть детская комната.</p><span class="more">Подробнее <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
-<a class="venue " href="https://grnhouse.ru/zavedeniya/letnyaya-terrasa/"><span class="ph">Фото: терраса [ЗАПОЛНИТЬ]</span><h3>Летняя терраса</h3><p>Второй этаж, вид на Берёзовую рощу.</p><span class="more">Подробнее <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
-<a class="venue " href="https://hobbithall.ru"><span class="ph">Фото: паб [ЗАПОЛНИТЬ]</span><h3>Паб «Хоббит Холл»</h3><p>Своя пивоварня, 4 сорта пива.</p><span class="more">Подробнее <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
-<a class="venue " href="https://beze.store"><span class="ph">Фото: кондитерская [ЗАПОЛНИТЬ]</span><h3>Кондитерская «Безе»</h3><p>Более 30 видов выпечки.</p><span class="more">Подробнее <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
-<a class="venue " href="https://grnhouse.ru/zavedeniya/sauna-i-bassejn/"><span class="ph">Фото: сауна [ЗАПОЛНИТЬ]</span><h3>Сауна и бассейн</h3><p>Для компании до 10 человек.</p><span class="more">Подробнее <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
-</div></div></section>
+<!-- HERO -->
+<section class="hero dark" id="top">
+  <div class="hero__scene" data-parallax="0.18" aria-hidden="true">
+    <div class="hero__sky"></div>
+    <div class="fog fog--1"></div>
+    <svg class="castle" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Силуэт замка. Заменить на фото фасада">
+      <g fill="#1d201d">
+        <path d="M0 600V430l60-30 60 30v-60l40-40 40 40v60l50-20 50 20v-90h40v-40l30-30 30 30v40h40v90h60V360h50v-50l40-70 40 70v50h50v110h70V330h60v-40l35-60 35 60v40h60v140h90V390h40v-60l40-40 40 40v60h40v90h70V420l60-40 60 40v60h60V400l50-50 50 50v80h80V440l70-40 70 40v160z"/>
+      </g>
+      <g fill="#0e100e"><path d="M0 600V520l90-20 90 20 80-30 90 30 110-20 110 20 90-40 100 40 120-30 120 30 90-20 90 20 90-30 100 30 100-20 110 20V600z"/></g>
+      <g fill="#B49A72" opacity=".75">
+        <rect x="705" y="300" width="10" height="16"/><rect x="745" y="300" width="10" height="16"/>
+        <rect x="960" y="318" width="10" height="16"/><rect x="1180" y="358" width="10" height="16"/>
+        <rect x="395" y="400" width="10" height="16"/><rect x="560" y="388" width="10" height="16"/>
+      </g>
+    </svg>
+    <div class="fog fog--2"></div>
+    <div class="grain"></div>
+  </div>
+  <div class="hero__shade"></div>
 
-<section class="section" id="kontakty" style="padding-top:0"><div class="container loc">
-<div><p class="eyebrow">Расположение</p><h2>Рядом с «Берёзовой рощей»</h2>
-<ul><li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>625016, г. Тюмень, ул. Николая Фёдорова, 9</span></li>
-<li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>До центра: 10 минут на машине, 15 на автобусе</span></li>
-<li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+73452385385">+7 (3452) 385-385</a></li>
-<li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><a href="mailto:reservation@grnhouse.ru">reservation@grnhouse.ru</a></li></ul></div>
-<div class="map"><p>Карта [ЗАПОЛНИТЬ]: виджет Яндекс/2ГИС подключить после выбора стека.</p>
-<a class="btn btn-line" href="https://yandex.ru/maps/?text=%D0%A2%D1%8E%D0%BC%D0%B5%D0%BD%D1%8C%2C%20%D1%83%D0%BB.%20%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D1%8F%20%D0%A4%D1%91%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D0%B0%2C%209">Открыть в Яндекс Картах</a></div>
-</div></section>
+  <div class="hero__body">
+    <p class="eyebrow reveal" data-delay="1.1">Бутик-отель 4★ · Тюмень</p>
+    <h1 class="hero__title" aria-label="Пусть будет сказка в Вашей жизни">
+      <span class="line"><span>Пусть будет</span></span>
+      <span class="line"><span><em>сказка</em> в Вашей</span></span>
+      <span class="line"><span>жизни</span></span>
+    </h1>
+    <div class="hero__foot">
+      <p class="hero__lead reveal" data-delay="1.7">Отель в замке рядом с парком «Берёзовая роща». До центра 10 минут на машине.</p>
+      <a class="scrollcue reveal" data-delay="1.9" href="#manifest" aria-label="Листать вниз"><span></span></a>
+    </div>
+  </div>
 
-<section class="section events" id="meropriyatiya"><div class="container ev-grid">
-<div><p class="eyebrow">Мероприятия</p><h2>Праздники и события в замке</h2><p class="lead" style="margin-top:16px">Шесть банкетных залов для свадеб, корпоративов, выпускных и конференций.</p></div>
-<ul class="ev-list"><li><a href="https://wedding.grnhouse.ru">Свадьба<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li><li><a href="https://grnhouse.ru/restoran-na-den-rozhdeniya/">День рождения<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li><li><a href="https://grnhouse.ru/restoran-na-korporativ/">Корпоратив<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li><li><a href="https://grnhouse.ru/restoran-na-vypusknoj/">Выпускной<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li><li><a href="https://grnhouse.ru/arenda-konferents-zala/">Бизнес и конференции<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li><li><a href="https://catering.grnhouse.ru">Кейтеринг<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li><li><a href="https://catalog.grnhouse.ru">Каталог подрядчиков<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li><li><a href="https://grnhouse.ru/podarochnye-sertifikaty/">Подарочные сертификаты<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></li></ul></div></section>
+  <form class="booking reveal" data-delay="2.0" id="book" action="#" onsubmit="return false" aria-label="Поиск номера">
+    <label><span>Заезд</span><input type="date" id="in" required></label>
+    <label><span>Выезд</span><input type="date" id="out" required></label>
+    <label><span>Гости</span>
+      <select><option>1 гость</option><option selected>2 гостя</option><option>3 гостя</option><option>4 гостя</option></select>
+    </label>
+    <button class="btn btn--solid" type="submit" data-magnet>Найти номер</button>
+  </form>
+</section>
 
-<section class="section"><div class="container">
-<div class="section-head"><p class="eyebrow">Отзывы</p><h2>Что говорят гости</h2></div>
-<div class="reviews-box"><p class="lead">Отзывы [ЗАПОЛНИТЬ]: берём только реальные, со страницы отзывов или из сервисов бронирования.</p>
-<a class="btn btn-line" href="https://grnhouse.ru/otzyvy/">Читать отзывы на сайте</a></div></div></section>
+<!-- MANIFEST -->
+<section class="manifest light" id="manifest">
+  <div class="wrap manifest__grid">
+    <p class="eyebrow">Об отеле</p>
+    <p class="manifest__text" data-words>Единственный в Тюмени отель в замке. Четыре дизайн-концепции номеров, ресторан, собственная пивоварня и тишина берёзовой рощи рядом.</p>
+    <ul class="stats">
+      <li><b data-count="4">0</b><span>звезды</span></li>
+      <li><b data-count="6">0</b><span>банкетных залов</span></li>
+      <li><b data-count="30" data-suffix="+">0</b><span>видов выпечки</span></li>
+      <li><b data-count="10">0</b><span>минут до центра</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ROOMS: динамическая смена двух категорий -->
+<section class="rooms dark" id="rooms" aria-label="Номера">
+  <div class="rooms__stage" id="stage">
+    <figure class="slide is-active" data-i="0">
+      <img src="img/room-double.jpg" alt="Номер «Дабл»: кровать Queen size, голубые обои в полоску, шторы с ламбрекенами">
+    </figure>
+    <figure class="slide" data-i="1">
+      <img src="img/room-suite.jpg" alt="«Королевский люкс»: кровать King size под балдахином, золотые орнаменты">
+    </figure>
+    <div class="rooms__shade"></div>
+
+    <div class="rooms__ui wrap">
+      <p class="eyebrow">Номера · от 4 900 ₽</p>
+
+      <div class="rooms__info" aria-live="polite">
+        <div class="rooms__idx"><span id="idx">01</span><i>/</i>02</div>
+        <h2 class="rooms__title" id="rTitle">Дабл</h2>
+        <p class="rooms__desc" id="rDesc">Первая категория. Кровать Queen size 1800×2000, четыре дизайн-концепции.</p>
+        <ul class="rooms__tags" id="rTags"><li>Queen size 1800×2000</li><li>4 концепции</li></ul>
+        <div class="rooms__row">
+          <p class="rooms__price"><span id="rPrice">7 200</span> ₽<small>за ночь</small></p>
+          <a class="btn btn--solid" href="#book" data-magnet>Забронировать</a>
+        </div>
+      </div>
+
+      <div class="rooms__tabs" role="tablist" aria-label="Категории номеров">
+        <button role="tab" class="tab is-active" data-i="0" aria-selected="true"><span>01</span> Дабл <i class="bar"></i></button>
+        <button role="tab" class="tab" data-i="1" aria-selected="false"><span>02</span> Королевский люкс <i class="bar"></i></button>
+        <button class="rooms__pause" id="pause" aria-label="Пауза">II</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUDED -->
+<div class="marquee dark" aria-label="Включено в проживание">
+  <div class="marquee__track">
+    <span>Бесплатная парковка</span><span>Безлимитный Wi-Fi</span><span>Room service</span><span>Приветственный напиток</span><span>Цифровое ТВ</span>
+    <span>Бесплатная парковка</span><span>Безлимитный Wi-Fi</span><span>Room service</span><span>Приветственный напиток</span><span>Цифровое ТВ</span>
+  </div>
+</div>
+
+<!-- VENUES -->
+<section class="venues light" id="venues">
+  <div class="wrap">
+    <header class="sec-head">
+      <p class="eyebrow">Заведения комплекса</p>
+      <h2 class="h2 reveal">Больше, чем <em>отель</em></h2>
+    </header>
+    <div class="venues__grid">
+      <article class="card card--tall reveal"><div class="ph ph--a" data-parallax="0.06" role="img" aria-label="Фото ресторана (заменить)"></div><h3>Ресторан в замке</h3><p>Единственный в Тюмени ресторан в замке. Есть детская комната.</p></article>
+      <article class="card reveal"><div class="ph ph--b" data-parallax="0.06" role="img" aria-label="Фото террасы (заменить)"></div><h3>Летняя терраса</h3><p>Второй этаж, вид на Берёзовую рощу.</p></article>
+      <article class="card reveal"><div class="ph ph--c" data-parallax="0.06" role="img" aria-label="Фото паба (заменить)"></div><h3>Паб «Хоббит Холл»</h3><p>Своя пивоварня, 4 сорта пива.</p></article>
+      <article class="card card--tall reveal"><div class="ph ph--d" data-parallax="0.06" role="img" aria-label="Фото кондитерской (заменить)"></div><h3>Кондитерская «Безе»</h3><p>Более 30 видов выпечки.</p></article>
+      <article class="card reveal"><div class="ph ph--e" data-parallax="0.06" role="img" aria-label="Фото сауны (заменить)"></div><h3>Сауна и бассейн</h3><p>Для компании до 10 человек.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="events dark" id="events">
+  <div class="wrap events__grid">
+    <header>
+      <p class="eyebrow">Мероприятия</p>
+      <h2 class="h2 reveal">Праздники и события <em>в замке</em></h2>
+      <p class="events__lead reveal">Шесть банкетных залов для свадеб, корпоративов, выпускных и конференций.</p>
+    </header>
+    <ul class="events__list">
+      <li class="reveal"><a href="#contacts"><span>01</span>Свадьба<i>→</i></a></li>
+      <li class="reveal"><a href="#contacts"><span>02</span>День рождения<i>→</i></a></li>
+      <li class="reveal"><a href="#contacts"><span>03</span>Корпоратив<i>→</i></a></li>
+      <li class="reveal"><a href="#contacts"><span>04</span>Выпускной<i>→</i></a></li>
+      <li class="reveal"><a href="#contacts"><span>05</span>Бизнес и конференции<i>→</i></a></li>
+      <li class="reveal"><a href="#contacts"><span>06</span>Кейтеринг · Подарочные сертификаты<i>→</i></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ABOUT / AWARDS -->
+<section class="about light" id="about">
+  <div class="wrap">
+    <p class="eyebrow">Признание гостей</p>
+    <ul class="awards">
+      <li class="reveal">Top Hotel in Tyumen</li>
+      <li class="reveal">Выбор пользователей Яндекса 2026</li>
+      <li class="reveal">Лучшая маленькая гостиница России</li>
+      <li class="reveal">2ГИС: лучшая гостиница 2025 и 2026</li>
+      <li class="reveal">Booking: «превосходно»</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section class="contacts dark" id="contacts">
+  <div class="wrap contacts__grid">
+    <div>
+      <p class="eyebrow">Контакты</p>
+      <h2 class="h2 reveal">Рядом с «Берёзовой <em>рощей</em>»</h2>
+    </div>
+    <address class="contacts__info reveal">
+      <p>625016, г. Тюмень,<br>ул. Николая Фёдорова, 9</p>
+      <p><a href="tel:+73452385385">+7 (3452) 385-385</a><br><a href="mailto:reservation@grnhouse.ru">reservation@grnhouse.ru</a><br><a href="https://vk.com/hotelgreen">vk.com/hotelgreen</a></p>
+      <a class="btn btn--ghost" href="https://yandex.ru/maps/?text=Тюмень, ул. Николая Фёдорова, 9" data-magnet>Открыть в Яндекс Картах</a>
+    </address>
+  </div>
+</section>
 </main>
 
-<footer class="footer"><div class="container">
-<div class="f-grid">
-<div><h3>Green House</h3><p>Пусть будет сказка в Вашей жизни.</p></div>
-<div><h3>Контакты</h3><ul><li><a href="tel:+73452385385"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+7 (3452) 385-385</a></li><li><a href="mailto:reservation@grnhouse.ru"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>reservation@grnhouse.ru</a></li><li><a href="https://vk.com/hotelgreen">VK: vk.com/hotelgreen</a></li></ul></div>
-<div><h3>Адрес</h3><p>625016, г. Тюмень,<br>ул. Николая Фёдорова, 9</p></div>
-</div>
-<p class="legal">ООО «ГРИН ХАУЗ», ОГРН 1117232037680. Макет главной страницы, фото и карта будут заменены.</p>
-</div></footer>
-<script>
-(function(){var i=document.getElementById('in'),o=document.getElementById('out');
-function iso(d){return d.toISOString().slice(0,10)}
-var t=new Date();i.min=iso(t);o.min=iso(new Date(t.getTime()+864e5));
-i.addEventListener('change',function(){if(!i.value)return;var n=new Date(new Date(i.value).getTime()+864e5);o.min=iso(n);if(o.value&&o.value<o.min)o.value=o.min});})();
-</script>
+<footer class="foot dark">
+  <p class="foot__mark" aria-hidden="true">Green House</p>
+  <p class="foot__legal">ООО «ГРИН ХАУЗ», ОГРН 1117232037680 · Пусть будет сказка в Вашей жизни</p>
+</footer>
+
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<script src="main.js"></script>
 </body>
 </html>

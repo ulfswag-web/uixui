@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Green House</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A120F; --bg-2:#101B16; --fg:#F5F5F4; --fg-2:#D6D3D1; --gold:#E7D3A0; --line:rgba(255,255,255,.18);
+  --glass:rgba(16,27,22,.50); --btn:#FFFFFF; --btn-fg:#0A120F;
+  --font:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --gutter:clamp(16px,3vw,40px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.55 var(--font)}
+a{color:inherit}
+.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:12px}
+a,button{cursor:pointer}
+.wrap{padding-inline:var(--gutter);max-width:1440px;margin-inline:auto}
+
+/* HERO: туман, лес и силуэт замка вместо фото. Заменить на реальное фото/видео. */
+.hero{position:relative;overflow:hidden;min-height:min(100svh,900px);display:flex;flex-direction:column;isolation:isolate;
+  background:linear-gradient(180deg,#52705F 0%,#2F4A3C 38%,#16271F 70%,#0A120F 100%)}
+.scene{position:absolute;inset:0;z-index:-1}
+.scene svg{position:absolute;inset:auto 0 0 0;width:100%;height:78%}
+.fog{position:absolute;left:-20%;width:140%;height:45%;filter:blur(40px);opacity:.55;
+  background:radial-gradient(60% 100% at 50% 50%,rgba(232,240,236,.55),transparent 70%);animation:drift 28s ease-in-out infinite alternate}
+.fog.f1{top:30%}.fog.f2{top:50%;opacity:.4;animation-duration:36s;animation-direction:alternate-reverse}
+@keyframes drift{from{transform:translateX(-6%)}to{transform:translateX(6%)}}
+.shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,18,15,.55),transparent 60%),linear-gradient(0deg,rgba(10,18,15,.7),transparent 45%)}
+.ph{position:absolute;right:var(--gutter);top:96px;font-size:.75rem;color:var(--gold);z-index:1}
+
+/* Навигация-пилюли */
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:20px}
+.brand{font-weight:600;font-size:1.25rem;letter-spacing:-.02em;text-decoration:none;min-height:44px;display:flex;align-items:center}
+.pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.pill{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:var(--glass);border:1px solid var(--line);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);text-decoration:none;font-size:.9rem;font-weight:500;transition:background-color .2s}
+.pill:hover{background:rgba(255,255,255,.2)}
+.pill.solid{background:var(--btn);color:var(--btn-fg);border-color:var(--btn)}
+.pill.solid:hover{background:#E7E5E4}
+@media (max-width:640px){.pill.hide-sm{display:none}}
+
+.hero-main{flex:1;display:flex;flex-direction:column;justify-content:center;padding-block:32px 24px}
+h1{margin:0;font-weight:600;letter-spacing:-.05em;line-height:.84;font-size:clamp(4.2rem,15vw,12.5rem)}
+h1 span{display:block}
+h1 span+span{margin-left:.04em}
+.hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding-bottom:32px;flex-wrap:wrap}
+.note{max-width:34ch;display:grid;gap:10px}
+.note b{font-weight:500;font-size:1.25rem;line-height:1.25;letter-spacing:-.01em}
+.note small{color:var(--fg-2);font-size:.9rem}
+.note i{font-style:normal;color:var(--gold);font-size:.85rem}
+.scroll{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--btn);color:var(--btn-fg);text-decoration:none;transition:transform .2s}
+.scroll:hover{transform:translateY(3px)}
+
+/* Плавающие стеклянные карточки */
+.float{display:flex;gap:12px;align-items:center;padding:10px 16px 10px 10px;border-radius:20px;background:var(--glass);border:1px solid var(--line);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);text-decoration:none;max-width:320px;transition:transform .2s}
+.float:hover{transform:translateY(-3px)}
+.float .thumb{width:64px;height:64px;border-radius:14px;flex:none;background:linear-gradient(135deg,#6E8F7B,#1B2E25)}
+.float b{display:block;font-weight:600;font-size:.95rem}
+.float span{display:block;color:var(--fg-2);font-size:.8rem;line-height:1.35}
+.floats{display:grid;gap:12px;justify-items:start;padding:0 var(--gutter) 32px}
+@media (min-width:900px){.floats{position:absolute;right:0;bottom:120px;justify-items:end;padding-bottom:0}}
+
+.in{animation:up .8s cubic-bezier(.2,.7,.2,1) both}
+.in.d1{animation-delay:.1s}.in.d2{animation-delay:.2s}.in.d3{animation-delay:.3s}
+@keyframes up{from{transform:translateY(18px);opacity:.5}to{transform:none;opacity:1}}
+
+/* Бронирование */
+.book{margin-top:-1px;background:var(--bg);padding-block:24px}
+.bar{display:grid;gap:12px;padding:16px;border-radius:24px;background:var(--bg-2);border:1px solid var(--line)}
+.bar label{display:grid;gap:4px;font-size:.8rem;color:var(--fg-2);font-weight:500}
+.bar input,.bar select{min-height:48px;padding:0 14px;border-radius:14px;border:1px solid var(--line);background:#0A120F;color:var(--fg);font:400 1rem var(--font);color-scheme:dark}
+.bar .pill.solid{justify-content:center;min-height:48px;font-size:1rem}
+@media (min-width:768px){.bar{grid-template-columns:repeat(3,1fr) auto;align-items:end}}
+
+/* Секции */
+.sec{padding-block:clamp(56px,9vw,112px)}
+.eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 12px}
+h2{margin:0 0 40px;font-weight:600;letter-spacing:-.04em;line-height:.95;font-size:clamp(2.4rem,6.5vw,5rem);max-width:14ch}
+.rooms{display:grid;gap:16px}
+@media (min-width:768px){.rooms{grid-template-columns:1fr 1fr}}
+.room{position:relative;min-height:420px;border-radius:28px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;text-decoration:none;
+  background:linear-gradient(160deg,#4A6B58,#14231C)}
+.room::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,18,15,.85),transparent 60%)}
+.room>*{position:relative}
+.room .ph2{position:absolute;top:20px;left:24px;font-size:.75rem;color:var(--gold)}
+.room h3{margin:0;font-size:2.2rem;letter-spacing:-.03em;font-weight:600;line-height:1}
+.room p{margin:6px 0 0;color:var(--fg-2);max-width:36ch}
+.price{display:inline-flex;margin-top:16px;gap:12px;align-items:center}
+.price strong{font-size:1.6rem;font-weight:600;letter-spacing:-.02em}
+.venues{display:grid;gap:12px}
+@media (min-width:768px){.venues{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1100px){.venues{grid-template-columns:repeat(4,1fr)}}
+.v{display:flex;flex-direction:column;justify-content:space-between;gap:48px;min-height:220px;padding:24px;border-radius:24px;background:var(--bg-2);border:1px solid var(--line);text-decoration:none;transition:background-color .2s}
+.v:hover{background:#17271F}
+.v h3{margin:0 0 6px;font-size:1.5rem;font-weight:600;letter-spacing:-.02em;line-height:1.1}
+.v p{margin:0;color:var(--fg-2);font-size:.95rem}
+.v .ic{align-self:flex-end}
+.ev{display:flex;flex-wrap:wrap;gap:10px}
+.ev .pill{background:var(--bg-2)}
+footer{border-top:1px solid var(--line);padding-block:40px 32px;color:var(--fg-2);font-size:.95rem}
+footer .row{display:grid;gap:24px}
+@media (min-width:768px){footer .row{grid-template-columns:1.2fr 1fr 1fr}}
+footer h3{margin:0 0 8px;color:var(--fg);font-size:1.1rem;font-weight:600}
+footer a{text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+footer a:hover{color:var(--gold)}
+.legal{margin-top:24px;font-size:.85rem;color:#A8A29E}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style></head><body>
+<header class="hero" id="top"><div class="scene" aria-hidden="true"><div class="fog f1"></div><div class="fog f2"></div>
+<svg viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice">
+<path d="M0 360 L180 250 L330 330 L520 190 L700 320 L880 230 L1100 340 L1260 270 L1440 350 V600 H0Z" fill="#2A4437" opacity=".85"/>
+<path d="M0 430 L240 340 L440 410 L640 330 L860 420 L1080 350 L1300 430 L1440 390 V600 H0Z" fill="#1B3027"/>
+<path d="M520 600 V430 h22 v-40 h12 v40 h20 v-70 l14 -26 14 26 v70 h24 v-34 h12 v34 h22 v-48 l12 -22 12 22 v48 h24 V600Z" fill="#0D1914"/>
+<rect x="640" y="470" width="8" height="14" rx="4" fill="#E7D3A0" opacity=".85"/><rect x="700" y="460" width="8" height="14" rx="4" fill="#E7D3A0" opacity=".7"/>
+<path d="M20 600 L50 360 L80 600 Z" fill="#0F1D17"/><path d="M70 600 L100 270 L130 600 Z" fill="#0C1813"/><path d="M130 600 L160 340 L190 600 Z" fill="#101E18"/><path d="M1010 600 L1040 300 L1070 600 Z" fill="#0C1813"/><path d="M1070 600 L1100 220 L1130 600 Z" fill="#0A140F"/><path d="M1130 600 L1160 330 L1190 600 Z" fill="#0F1D17"/><path d="M1200 600 L1230 260 L1260 600 Z" fill="#0A140F"/><path d="M1260 600 L1290 350 L1320 600 Z" fill="#101E18"/><path d="M1330 600 L1360 290 L1390 600 Z" fill="#0C1813"/><path d="M1390 600 L1420 330 L1450 600 Z" fill="#0A140F"/><path d="M0 560 Q360 520 720 556 T1440 540 V600 H0Z" fill="#08100C"/></svg></div><div class="shade" aria-hidden="true"></div>
+<span class="ph">Фон: фото или видео замка [ЗАПОЛНИТЬ]</span>
+<div class="wrap" style="width:100%"><div class="top">
+<a class="brand" href="#top">Green House</a>
+<nav class="pills" aria-label="Основное меню"><a class="pill hide-sm" href="#nomera">Номера</a><a class="pill hide-sm" href="#zavedeniya">Заведения</a><a class="pill hide-sm" href="#meropriyatiya">Мероприятия</a><a class="pill solid" href="#kontakty">+7 (3452) 385-385</a></nav></div></div>
+<div class="wrap hero-main" style="width:100%">
+<h1 class="in"><span>Green</span><span>House</span></h1></div>
+<div class="wrap" style="width:100%"><div class="hero-bottom">
+<div class="note in d2"><b>Пусть будет сказка в Вашей жизни</b><small>Бутик-отель 4★ в замке рядом с парком «Берёзовая роща». Тюмень, до центра 10 минут на машине.</small><i>[ Номера от 4 900 ₽ ]</i></div>
+<a class="scroll" href="#book" aria-label="Прокрутить к бронированию"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></a></div></div>
+<div class="floats in d3"><a class="float" href="https://grnhouse.ru/nomera/luxury-king-suite/"><span class="thumb" role="img" aria-label="Место для фото [ЗАПОЛНИТЬ]"></span><span><b>Королевский люкс</b><span>Открытая терраса 75 м², кровать King size</span></span></a>
+<a class="float" href="https://grnhouse.ru/zavedeniya/restoran-v-tyumeni/"><span class="thumb" role="img" aria-label="Место для фото [ЗАПОЛНИТЬ]"></span><span><b>Ресторан в замке</b><span>Единственный в Тюмени ресторан в замке</span></span></a></div>
+</header>
+
+<section class="book" id="book"><div class="wrap"><form class="bar" action="https://grnhouse.ru/bronirovanie-nomera/" method="get" aria-label="Поиск номера">
+<input type="hidden" name="hotel_id" value="1064">
+<!-- TODO: параметры дат и гостей определяются виджетом TravelLine, согласовать. Пока форма ведёт на страницу бронирования. -->
+<label for="in">Заезд<input id="in" type="date"></label>
+<label for="out">Выезд<input id="out" type="date"></label>
+<label for="g">Гости<select id="g"><option>1 гость</option><option selected>2 гостя</option><option>3 гостя</option><option>4 гостя</option></select></label>
+<button class="pill solid" type="submit" style="border:0">Найти номер</button></form></div></section>
+
+<section class="sec" id="nomera"><div class="wrap"><p class="eyebrow">Номера</p><h2>Две категории</h2>
+<div class="rooms">
+<a class="room" href="https://grnhouse.ru/nomera/double-room/"><span class="ph2">Фото номера [ЗАПОЛНИТЬ]</span><h3>Дабл</h3><p>Первая категория, Queen size 1800×2000, 4 дизайн-концепции.</p><span class="price"><strong>7 200 ₽</strong><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+<a class="room" href="https://grnhouse.ru/nomera/luxury-king-suite/"><span class="ph2">Фото номера [ЗАПОЛНИТЬ]</span><h3>Королевский люкс</h3><p>Джуниор-сюит, King size 2000×2000, открытая терраса 75 м².</p><span class="price"><strong>22 000 ₽</strong><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+</div></div></section>
+
+<section class="sec" id="zavedeniya" style="padding-top:0"><div class="wrap"><p class="eyebrow">Заведения</p><h2>Весь день в одном месте</h2>
+<div class="venues">
+<a class="v" href="https://grnhouse.ru/zavedeniya/restoran-v-tyumeni/"><div><h3>Ресторан</h3><p>Единственный в Тюмени в замке. Детская комната.</p></div><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+<a class="v" href="https://grnhouse.ru/zavedeniya/letnyaya-terrasa/"><div><h3>Летняя терраса</h3><p>Второй этаж, вид на рощу.</p></div><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+<a class="v" href="https://hobbithall.ru"><div><h3>Хоббит Холл</h3><p>Паб, своя пивоварня, 4 сорта.</p></div><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+<a class="v" href="https://beze.store"><div><h3>Безе</h3><p>Кондитерская, 30+ видов выпечки.</p></div><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+</div></div></section>
+
+<section class="sec" id="meropriyatiya" style="padding-top:0"><div class="wrap"><p class="eyebrow">Мероприятия</p><h2>Праздники в замке</h2>
+<div class="ev"><a class="pill" href="https://wedding.grnhouse.ru">Свадьба</a><a class="pill" href="https://grnhouse.ru/restoran-na-den-rozhdeniya/">День рождения</a><a class="pill" href="https://grnhouse.ru/restoran-na-korporativ/">Корпоратив</a><a class="pill" href="https://grnhouse.ru/restoran-na-vypusknoj/">Выпускной</a><a class="pill" href="https://grnhouse.ru/arenda-konferents-zala/">Конференции</a><a class="pill" href="https://catering.grnhouse.ru">Кейтеринг</a><a class="pill" href="https://grnhouse.ru/podarochnye-sertifikaty/">Сертификаты</a></div></div></section>
+
+<footer id="kontakty"><div class="wrap"><div class="row">
+<div><h3>Green House</h3>625016, г. Тюмень,<br>ул. Николая Фёдорова, 9</div>
+<div><h3>Связаться</h3><a href="tel:+73452385385">+7 (3452) 385-385</a><br><a href="mailto:reservation@grnhouse.ru">reservation@grnhouse.ru</a></div>
+<div><h3>Соцсети</h3><a href="https://vk.com/hotelgreen">VK: vk.com/hotelgreen</a></div></div>
+<p class="legal">ООО «ГРИН ХАУЗ», ОГРН 1117232037680. Макет: фон и фото будут заменены.</p></div></footer>
+<script>(function(){var i=document.getElementById('in'),o=document.getElementById('out');function s(d){return d.toISOString().slice(0,10)}var t=new Date();i.min=s(t);o.min=s(new Date(t.getTime()+864e5));i.addEventListener('change',function(){if(!i.value)return;var n=new Date(new Date(i.value).getTime()+864e5);o.min=s(n);if(o.value&&o.value<o.min)o.value=o.min});})();</script>
+</body></html>

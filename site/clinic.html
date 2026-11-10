@@ -46,15 +46,58 @@ h2{font-size:clamp(32px,4.4vw,52px);letter-spacing:-.03em;line-height:1.1;font-w
 .ic svg{width:26px;height:26px;stroke:var(--teal);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .svc h3{font-size:22px;letter-spacing:-.02em}.svc p{color:var(--muted);font-size:15px}
 .svc.more{background:var(--ink);color:#fff;justify-content:flex-end}.svc.more .ic{background:rgba(255,255,255,.12)}.svc.more svg{stroke:#fff}
-.tech{background:var(--ink);color:#fff;border-radius:44px;padding:70px 56px;display:grid;grid-template-columns:1fr 1fr;gap:50px}
-.tech .lead{color:#a6d2bd}
-.tech ul{list-style:none;padding:0;display:grid;gap:14px}
-.tech li{background:rgba(255,255,255,.07);border-radius:20px;padding:20px 24px;display:flex;justify-content:space-between;gap:16px}
-.tech li span{color:#7fd6ab;font-size:14px;white-space:nowrap}
+.tabs{display:flex;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.tab{position:relative;overflow:hidden;flex:1;min-width:200px;display:flex;align-items:center;gap:12px;background:#fff;border:0;border-radius:999px;padding:14px 22px;font:600 15px/1.2 Manrope,sans-serif;color:var(--muted);cursor:pointer;text-align:left;transition:.3s}
+.tab svg{width:26px;height:26px;flex:none;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.tab:hover{color:var(--teal)}.tab.on{background:var(--mint);color:var(--teal)}
+.tab i{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--teal)}
+.tab.on i{animation:prog 7s linear forwards}.paused .tab.on i{animation-play-state:paused}
+@keyframes prog{to{width:100%}}
+.stage{position:relative;overflow:hidden;border-radius:44px;background:linear-gradient(135deg,#008F61,#00704D);color:#fff;min-height:470px}
+.stage::before,.stage::after{content:"";position:absolute;border:1.5px solid rgba(255,255,255,.14);border-radius:50%;animation:ring 9s ease-in-out infinite}
+.stage::before{width:620px;height:620px;left:-160px;top:-120px}.stage::after{width:900px;height:900px;right:-300px;bottom:-480px;animation-delay:-4s}
+@keyframes ring{50%{transform:scale(1.08) rotate(8deg)}}
+.slide{position:absolute;inset:0;display:grid;grid-template-columns:.95fr 1.05fr;gap:30px;align-items:center;padding:40px 56px;opacity:0;visibility:hidden;transition:opacity .5s,visibility .5s}
+.slide.on{opacity:1;visibility:visible}
+.pic{position:relative;aspect-ratio:1.08;max-height:390px;margin:auto;width:100%;display:grid;place-items:center}
+.pic::before{content:"";position:absolute;inset:4%;background:#fff;animation:morph 9s ease-in-out infinite;transform:scale(.6);opacity:0;transition:.7s cubic-bezier(.2,.9,.3,1.2)}
+.slide.on .pic::before{transform:scale(1);opacity:1}
+@keyframes morph{0%,100%{border-radius:58% 42% 52% 48%/45% 55% 45% 55%}50%{border-radius:42% 58% 45% 55%/58% 42% 58% 42%}}
+.pic img{position:relative;width:88%;transform:translateY(40px) scale(.9);opacity:0;transition:.8s .15s cubic-bezier(.2,.9,.3,1)}
+.slide.on .pic img{transform:none;opacity:1;animation:bob 5s ease-in-out .9s infinite}
+@keyframes bob{50%{transform:translateY(-10px) rotate(-1deg)}}
+.spark{position:absolute;width:14px;height:14px;background:#9BF0C4;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);animation:tw 2.4s ease-in-out infinite}
+.spark.s1{top:8%;right:8%}.spark.s2{bottom:14%;left:2%;animation-delay:-1s;width:20px;height:20px}.spark.s3{top:42%;right:-2%;animation-delay:-1.8s;width:10px;height:10px}
+@keyframes tw{50%{transform:scale(.3) rotate(90deg);opacity:.3}}
+.txt h3{display:inline-block;background:rgba(255,255,255,.18);backdrop-filter:blur(6px);font-size:24px;letter-spacing:-.02em;padding:16px 26px;border-radius:20px;margin-bottom:22px}
+.txt li,.txt h3,.txt .chips{opacity:0;transform:translateX(34px);transition:.6s cubic-bezier(.2,.8,.3,1)}
+.slide.on .txt h3,.slide.on .txt li,.slide.on .txt .chips{opacity:1;transform:none}
+.slide.on .txt li:nth-child(1){transition-delay:.3s}.slide.on .txt li:nth-child(2){transition-delay:.42s}.slide.on .txt li:nth-child(3){transition-delay:.54s}.slide.on .txt .chips{transition-delay:.7s}
+.txt ul{list-style:none;padding:0;display:grid;gap:12px;margin-bottom:26px}
+.txt li{position:relative;padding-left:24px;opacity:.95;font-size:16px}
+.txt li::before{content:"";position:absolute;left:0;top:.5em;width:9px;height:9px;border-radius:50%;background:#9BF0C4}
+.chips{display:flex;gap:12px;flex-wrap:wrap}
+.chip{background:rgba(255,255,255,.14);border-radius:999px;padding:9px 18px;font-size:14px;font-weight:600}
+.chip b{font-size:22px;margin-right:6px;color:#9BF0C4}
+.bgfx{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bgfx svg{position:absolute;bottom:-80px;fill:none;stroke:var(--teal);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;opacity:0;animation:rise linear infinite}
+@keyframes rise{0%{transform:translateY(0) rotate(0);opacity:0}10%{opacity:.16}90%{opacity:.16}100%{transform:translateY(-115vh) rotate(40deg);opacity:0}}
+main,header,.top{position:relative;z-index:1}header{position:sticky}
+.rv{opacity:0;transform:translateY(28px);transition:.8s cubic-bezier(.2,.8,.3,1)}.rv.in{opacity:1;transform:none}
 .docs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.doc{background:var(--card);border-radius:var(--r);padding:16px 16px 26px}
-.ph{aspect-ratio:1/1;border-radius:20px;margin-bottom:18px;display:grid;place-items:center;font-size:54px;font-weight:800;color:rgba(10,59,42,.35)}
-.doc h3{font-size:19px;padding:0 10px}.doc p{padding:0 10px;color:var(--muted);font-size:14px}
+.doc{position:relative;overflow:hidden;background:#fff;border-radius:var(--r);padding:30px 28px;min-height:270px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .4s cubic-bezier(.2,.8,.3,1),box-shadow .4s}
+.doc:hover{transform:translateY(-8px);box-shadow:0 26px 54px rgba(0,100,60,.16)}
+.doc .bl{position:absolute;right:-14%;bottom:-24%;width:78%;aspect-ratio:1;background:linear-gradient(150deg,#2FD38C,#008F61);animation:morph 8s ease-in-out infinite;transform:scale(0);transition:transform .9s cubic-bezier(.2,.9,.3,1.15) var(--d,0s)}
+.doc.in .bl{transform:scale(1)}.doc:hover .bl{transform:scale(1.25)!important;transition-duration:.6s;transition-delay:0s}
+.doc img{position:absolute;right:0;bottom:0;height:88%;width:auto;transform:translateY(60px);opacity:0;transition:transform .9s cubic-bezier(.2,.9,.3,1) calc(var(--d,0s) + .2s),opacity .6s calc(var(--d,0s) + .2s)}
+.doc.in img{transform:none;opacity:1}.doc:hover img{transform:scale(1.06) translateY(-4px);transition:transform .5s;transition-delay:0s}
+.doc h3{font-size:25px;line-height:1.1;letter-spacing:-.02em;color:var(--teal);position:relative;max-width:62%}
+.doc h3 span{display:block;font-size:16px;font-weight:600;margin-top:6px}
+.doc p{position:relative;max-width:44%;font-size:14px;color:var(--muted);margin:12px 0 18px}
+.doc .st{position:relative;display:flex;gap:18px;font-size:12px;color:var(--teal);font-weight:600}
+.doc .st b{display:block;font-size:22px;line-height:1.1;letter-spacing:-.02em}
+.doc .st i{position:absolute;inset:0}
+.doc{opacity:0;transform:translateY(26px)}.doc.in{opacity:1;transform:none;transition:opacity .7s var(--d,0s),transform .7s var(--d,0s)}.doc.in:hover{transform:translateY(-8px)}
 .rate{display:flex;gap:40px;align-items:center;flex-wrap:wrap;margin-bottom:36px}
 .rate b{font-size:72px;letter-spacing:-.04em;line-height:1;color:var(--teal)}
 .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -64,11 +107,12 @@ h2{font-size:clamp(32px,4.4vw,52px);letter-spacing:-.03em;line-height:1.1;font-w
 .final{background:linear-gradient(135deg,#BFE6CF,#E3F1D2);border-radius:44px;text-align:center;padding:90px 24px}
 .final p{font-size:20px;color:var(--ink);opacity:.75;margin:10px 0 34px}
 footer{padding:50px 0;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
-@media(max-width:900px){nav{display:none}.hero{min-height:520px;border-radius:32px}.hero>div:first-child{padding:28px}.float{display:none}.tech{grid-template-columns:1fr}.why{grid-template-columns:1fr 1fr}.services,.docs,.reviews{grid-template-columns:1fr}.tech{padding:44px 26px}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+@media(max-width:900px){nav{display:none}.hero{min-height:520px;border-radius:32px}.hero>div:first-child{padding:28px}.float{display:none}.tech{grid-template-columns:1fr}.why{grid-template-columns:1fr 1fr}.services,.docs,.reviews{grid-template-columns:1fr}.doc h3{max-width:60%;font-size:22px}.tabs{gap:8px}.tab{min-width:calc(50% - 8px);padding:12px 16px;font-size:13px}.stage{min-height:0;display:grid}.slide{position:relative;grid-column:1;grid-row:1;grid-template-columns:1fr;padding:28px 22px}.slide:not(.on){position:absolute}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.doc,.doc img{opacity:1!important;transform:none!important}.doc .bl{transform:none!important}.bgfx{display:none}.rv,.slide .txt li,.slide .txt h3,.slide .txt .chips,.slide .pic img{opacity:1!important;transform:none!important}.pic::before{opacity:1;transform:none}}
 </style>
 </head>
 <body>
+<div class="bgfx" aria-hidden="true"><svg viewBox="0 0 24 24" style="left:4%;width:22px;animation-duration:22s;animation-delay:-0s"><path d="M12 5v14M5 12h14"/></svg><svg viewBox="0 0 120 130" style="left:13%;width:47px;animation-duration:25s;animation-delay:-5s"><path d="M60 8c-14-9-40-4-44 20-3 18 6 28 8 46 2 18 5 48 16 48 9 0 8-30 20-30s11 30 20 30c11 0 14-30 16-48 2-18 11-28 8-46C100 4 74-1 60 8Z"/></svg><svg viewBox="0 0 120 130" style="left:22%;width:54px;animation-duration:28s;animation-delay:-10s"><path d="M60 8c-14-9-40-4-44 20-3 18 6 28 8 46 2 18 5 48 16 48 9 0 8-30 20-30s11 30 20 30c11 0 14-30 16-48 2-18 11-28 8-46C100 4 74-1 60 8Z"/></svg><svg viewBox="0 0 24 24" style="left:31%;width:22px;animation-duration:31s;animation-delay:-15s"><path d="M12 5v14M5 12h14"/></svg><svg viewBox="0 0 120 130" style="left:40%;width:68px;animation-duration:34s;animation-delay:-20s"><path d="M60 8c-14-9-40-4-44 20-3 18 6 28 8 46 2 18 5 48 16 48 9 0 8-30 20-30s11 30 20 30c11 0 14-30 16-48 2-18 11-28 8-46C100 4 74-1 60 8Z"/></svg><svg viewBox="0 0 120 130" style="left:49%;width:41px;animation-duration:23s;animation-delay:-0s"><path d="M60 8c-14-9-40-4-44 20-3 18 6 28 8 46 2 18 5 48 16 48 9 0 8-30 20-30s11 30 20 30c11 0 14-30 16-48 2-18 11-28 8-46C100 4 74-1 60 8Z"/></svg><svg viewBox="0 0 24 24" style="left:58%;width:22px;animation-duration:26s;animation-delay:-5s"><path d="M12 5v14M5 12h14"/></svg><svg viewBox="0 0 120 130" style="left:67%;width:55px;animation-duration:29s;animation-delay:-10s"><path d="M60 8c-14-9-40-4-44 20-3 18 6 28 8 46 2 18 5 48 16 48 9 0 8-30 20-30s11 30 20 30c11 0 14-30 16-48 2-18 11-28 8-46C100 4 74-1 60 8Z"/></svg><svg viewBox="0 0 120 130" style="left:76%;width:62px;animation-duration:32s;animation-delay:-15s"><path d="M60 8c-14-9-40-4-44 20-3 18 6 28 8 46 2 18 5 48 16 48 9 0 8-30 20-30s11 30 20 30c11 0 14-30 16-48 2-18 11-28 8-46C100 4 74-1 60 8Z"/></svg><svg viewBox="0 0 24 24" style="left:85%;width:22px;animation-duration:35s;animation-delay:-20s"><path d="M12 5v14M5 12h14"/></svg><svg viewBox="0 0 120 130" style="left:94%;width:42px;animation-duration:24s;animation-delay:-0s"><path d="M60 8c-14-9-40-4-44 20-3 18 6 28 8 46 2 18 5 48 16 48 9 0 8-30 20-30s11 30 20 30c11 0 14-30 16-48 2-18 11-28 8-46C100 4 74-1 60 8Z"/></svg><svg viewBox="0 0 120 130" style="left:7%;width:49px;animation-duration:27s;animation-delay:-5s"><path d="M60 8c-14-9-40-4-44 20-3 18 6 28 8 46 2 18 5 48 16 48 9 0 8-30 20-30s11 30 20 30c11 0 14-30 16-48 2-18 11-28 8-46C100 4 74-1 60 8Z"/></svg></div>
 <div class="top">Работаем ежедневно с 09:00 до 21:00 · 3D-диагностика бесплатно</div>
 <header><div class="wrap">
 <a class="logo" href="#" aria-label="Dr. Albus, на главную"><img src="img/logo.png" alt="Dr. Albus"></a>
@@ -112,27 +156,9 @@ footer{padding:50px 0;color:var(--muted);font-size:14px;display:flex;justify-con
   </div>
 </section>
 
-<section id="tech">
-  <div class="tech">
-    <div><h2>Лучшее оборудование</h2><p class="lead">Точная диагностика и мягкое лечение — это оборудование, которое мы используем каждый день.</p><a class="btn" style="background:#fff;color:var(--ink)" href="#">Фототур по клинике</a></div>
-    <ul>
-      <li>Дентальный микроскоп Leica<span>точность лечения</span></li>
-      <li>Установка KaVo E30<span>Германия</span></li>
-      <li>3D-томограф PanExam<span>минимум излучения</span></li>
-      <li>Сканер SIRONA Primescan<span>50 000 снимков/с</span></li>
-    </ul>
-  </div>
-</section>
+<section id="tech"><h2 class="rv">Используем лучшее</h2><p class="lead rv">Точная диагностика и мягкое лечение — оборудование, которое работает каждый день.</p><div class="tabs rv"><button class="tab on" data-i="0"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3l5 3-2 4M7 10l5 3M5 21h14M9 21c0-3 1-5 4-6M12 13l4-3"/></svg><span>Дентальный микроскоп Leica</span><i></i></button><button class="tab" data-i="1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18h10M6 18l-2-6 8-2 4 8M16 6l3 3M14 4l5 5"/></svg><span>Установка KaVo E30</span><i></i></button><button class="tab" data-i="2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4v10l-8 4-8-4V7l8-4zM12 12l8-5M12 12L4 7M12 12v9"/></svg><span>3D-томограф PanExam</span><i></i></button><button class="tab" data-i="3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6c0-2 3-3 8-3s8 1 8 3-3 3-8 3-8-1-8-3zM12 9v6M8 21h8M9 15h6"/></svg><span>Сканер SIRONA Primescan</span><i></i></button></div><div class="stage rv"><div class="slide on"><div class="pic"><img src="img/eq-mic.webp" alt="Дентальный микроскоп Leica"><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span></div><div class="txt"><h3>Дентальный микроскоп Leica</h3><ul><li>максимально сохранить здоровье ткани зуба</li><li>эффективно лечить каналы, чтобы сохранить зуб живым</li><li>снизить риск вторичного кариеса — коронки, виниры и пломбы прилегают на 100%</li></ul><div class="chips"><span class="chip"><b>x25</b>кратное увеличение</span></div></div></div><div class="slide"><div class="pic"><img src="img/eq-kavo.webp" alt="Установка KaVo E30"><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span></div><div class="txt"><h3>Стоматологическая установка KaVo E30 (Германия)</h3><ul><li>Оптимальный комфорт для пациента</li><li>Исключительная эргономика и дизайн</li><li>Удобна для работы двух врачей — услуга быстрее и комфортнее</li></ul><div class="chips"><span class="chip"><b>✦</b>покрытие с эффектом памяти</span><span class="chip"><b>✦</b>максимальный комфорт при лечении</span></div></div></div><div class="slide"><div class="pic"><img src="img/eq-3d.webp" alt="3D-томограф PanExam"><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span></div><div class="txt"><h3>3D-томограф PanExam KaVo (Германия)</h3><ul><li>Покажет положение, форму и строение челюсти и зубов</li><li>Незаменим при детальной диагностике и любых манипуляциях</li><li>3D-визуализация, цефалометрическая и панорамная съёмка, съёмка прикуса</li></ul><div class="chips"><span class="chip"><b>✦</b>высокое качество снимков</span><span class="chip"><b>✦</b>минимальное воздействие</span></div></div></div><div class="slide"><div class="pic"><img src="img/eq-sirona.webp" alt="Сканер SIRONA Primescan"><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span></div><div class="txt"><h3>Интраоральный сканер SIRONA Primescan</h3><ul><li>Исключительная точность и чёткость: сенсор Smart Pixel Sensor, глубина сканирования до 20 мм</li><li>Более 50 000 изображений в секунду — быстрая обработка нужных данных</li></ul><div class="chips"><span class="chip"><b>✦</b>гигиена на высшем уровне</span><span class="chip"><b>✦</b>автономное питание от батареи</span></div></div></div></div></section>
 
-<section id="vrachi">
-  <h2>Врачи, которым доверяют</h2>
-  <p class="lead">Опытная команда: от 6 до 19 лет практики.</p>
-  <div class="docs">
-    <div class="doc"><div class="ph" style="background:var(--mint)">Е</div><h3>Кошелева Елена Андреевна</h3><p>Главный врач, стоматолог-терапевт, детский · 14 лет</p></div>
-    <div class="doc"><div class="ph" style="background:var(--sand)">А</div><h3>Деркач Алена Анатольевна</h3><p>Зав. терапевтическим отделением · 16 лет</p></div>
-    <div class="doc"><div class="ph" style="background:var(--sky)">А</div><h3>Сипачев Андрей Александрович</h3><p>Стоматолог-ортопед, терапевт · 18 лет</p></div>
-  </div>
-</section>
+<section id="vrachi"><h2 class="rv">Наши врачи</h2><p class="lead rv">Опытная команда: от 6 до 19 лет практики. Лечим детей и взрослых.</p><div class="docs"><div class="doc rv0" style="--d:0.00s"><span class="bl"></span><img src="img/dr-kosheleva.webp" alt="Кошелева Елена Андреевна" width="190" height="250"><div><h3>Кошелева<span>Елена Андреевна</span></h3><p>Главный врач, врач-стоматолог-терапевт, детский</p></div><div class="st"><div><b class="cnt" data-to="14">0</b>лет опыта</div></div></div><div class="doc rv0" style="--d:0.12s"><span class="bl"></span><img src="img/dr-derkach.webp" alt="Деркач Алена Анатольевна" width="190" height="250"><div><h3>Деркач<span>Алена Анатольевна</span></h3><p>Зав. взрослым тер. отделением, врач — стоматолог-терапевт</p></div><div class="st"><div><b class="cnt" data-to="16">0</b>лет опыта</div></div></div><div class="doc rv0" style="--d:0.24s"><span class="bl"></span><img src="img/dr-dadashev.webp" alt="Дадашев Шамиль Ахмедович" width="190" height="250"><div><h3>Дадашев<span>Шамиль Ахмедович</span></h3><p>Врач — стоматолог-терапевт, врач-стоматолог детский</p></div><div class="st"><div><b class="cnt" data-to="15">0</b>лет опыта</div></div></div><div class="doc rv0" style="--d:0.15s"><span class="bl"></span><img src="img/dr-sipachev.webp" alt="Сипачев Андрей Александрович" width="190" height="250"><div><h3>Сипачев<span>Андрей Александрович</span></h3><p>Врач — стоматолог-ортопед, терапевт</p></div><div class="st"><div><b class="cnt" data-to="18">0</b>лет опыта</div></div></div><div class="doc rv0" style="--d:0.27s"><span class="bl"></span><img src="img/dr-pankova.webp" alt="Панькова Ольга Геннадьевна" width="190" height="250"><div><h3>Панькова<span>Ольга Геннадьевна</span></h3><p>Врач — стоматолог-терапевт</p></div><div class="st"><div><b class="cnt" data-to="19">0</b>лет опыта</div></div></div><div class="doc rv0" style="--d:0.39s"><span class="bl"></span><img src="img/dr-isakova.webp" alt="Исакова Анна Андреевна" width="190" height="250"><div><h3>Исакова<span>Анна Андреевна</span></h3><p>Врач — стоматолог-терапевт</p></div><div class="st"><div><b class="cnt" data-to="6">0</b>лет опыта</div></div></div></div></section>
 
 <section id="otzyvy">
   <div class="rate"><b>4,8</b><div><div class="stars">★★★★★</div><p style="color:var(--muted)">1 465 отзывов на независимых площадках.<br>Доверие начинается с репутации.</p></div></div>
@@ -152,5 +178,17 @@ footer{padding:50px 0;color:var(--muted);font-size:14px;display:flex;justify-con
 </section>
 <footer><span>© Dr. Albus, Тюмень</span><span>Тестовый вариант дизайна</span></footer>
 </main>
+<script>
+(()=>{const T=[...document.querySelectorAll('.tab')],S=[...document.querySelectorAll('.slide')],st=document.querySelector('.stage');let cur=0,tm;
+function go(i){cur=i;T.forEach((t,k)=>{t.classList.remove('on');if(k==i){void t.offsetWidth;t.classList.add('on')}});S.forEach((x,k)=>x.classList.toggle('on',k==i));clearTimeout(tm);tm=setTimeout(()=>go((cur+1)%S.length),7000)}
+T.forEach((t,k)=>t.onclick=()=>go(k));
+[st,...T].forEach(e=>{e.onmouseenter=()=>{clearTimeout(tm);document.body.classList.add('paused')};e.onmouseleave=()=>{document.body.classList.remove('paused');go(cur)}});
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches)go(0);
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+const io2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const c=e.target;c.classList.add('in');const n=c.querySelector('.cnt'),to=+n.dataset.to,t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/1400);n.textContent=Math.round(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(t0);io2.unobserve(c)}}),{threshold:.25});
+document.querySelectorAll('.doc').forEach(e=>io2.observe(e));
+})();
+</script>
 </body>
 </html>
